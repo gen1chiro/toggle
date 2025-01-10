@@ -51,10 +51,8 @@ function App() {
     }
 
     return (
-        <div>
-            <h1 className="text-2xl font-semibold">My first react project!</h1>
-            <h1>number of tasks: {taskCount}</h1>
-            <h1>number of tasks done: {doneTaskCount}</h1>
+        <main className="bg-pink-50">
+            <h1>{doneTaskCount}/{taskCount} Completed</h1>
             <button onClick={handleOpen}>Add Task</button>
             <TaskInput
                     ref={dialogRef}
@@ -67,7 +65,7 @@ function App() {
                     handleDelete={deleteTask}
                     handleToggle={toggleTask}
             />
-        </div>
+        </main>
     )
 }
 

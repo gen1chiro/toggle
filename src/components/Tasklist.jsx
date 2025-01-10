@@ -17,7 +17,6 @@ const Tasklist = ({tasks, setTasks, handleDelete, handleToggle}) => {
 
     return (
         <>
-            <h1>This is the task list</h1>
             {taskArray}
         </>
     )
