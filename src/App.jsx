@@ -1,19 +1,18 @@
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import Tasklist from "./components/Tasklist";
 import TaskInput from "./components/TaskInput";
 
 function App() {
     const dialogRef = useRef(null)
-    const [tasks ,setTasks] = useState([{
-        id: Date.now(),
-        name: "test",
-        description: "test task",
-        isDone: false
-    }])
+    const [tasks ,setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || [])
     const taskCount= tasks.length
     const doneTaskCount = tasks.filter(
         task => task.isDone === true
     ).length
+
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks))
+    }, [tasks])
 
     const handleOpen = () => {
         if (dialogRef.current) dialogRef.current.showModal()
