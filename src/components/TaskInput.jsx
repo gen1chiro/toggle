@@ -23,7 +23,7 @@ const TaskInput = ({handleAdd, onClose, ref}) => {
                 <textarea className="w-full h-20 resize-none p-1 hover:bg-gray-100 rounded-md focus:outline-0 focus:bg-gray-100" id="task-description" name="description" placeholder="description"></textarea>
                 <div className="flex gap-2 text-sm">
                     <button className="border-[1px] px-4 py-1 rounded-md text-slate-500 font-medium shadow-sm hover:bg-gray-100" type="button" onClick={handleClose}>Cancel</button>
-                    <button className="bg-indigo-600 rounded-md font-semibold px-4 py-1 text-white hover:bg-indigo-700" onClick={onClose}>Add Task</button>
+                    <button className="bg-violet-600 rounded-md font-semibold px-4 py-1 text-white hover:bg-violet-700" onClick={onClose}>Add Task</button>
                 </div>
             </form>
         </dialog>
