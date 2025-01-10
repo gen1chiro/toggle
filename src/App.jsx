@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Tasklist from "./components/Tasklist";
 import TaskInput from "./components/TaskInput";
 
 function App() {
-    const [open, setOpen] = useState(false)
+    const dialogRef = useRef(null)
     const [tasks ,setTasks] = useState([{
         id: Date.now(),
         name: "test",
@@ -15,8 +15,12 @@ function App() {
         task => task.isDone === true
     ).length
 
-    const handleOpen = () => setOpen(true)
-    const handleClose = () => setOpen(false)
+    const handleOpen = () => {
+        if (dialogRef.current) dialogRef.current.showModal()
+    }
+    const handleClose = () => {
+        if (dialogRef.current) dialogRef.current.close()
+    }
 
     const addTask = (task) => {
         setTasks(tasks => [
@@ -54,7 +58,7 @@ function App() {
             <h1>number of tasks done: {doneTaskCount}</h1>
             <button onClick={handleOpen}>Add Task</button>
             <TaskInput
-                    isOpen={open}
+                    ref={dialogRef}
                     onClose={handleClose}
                     handleAdd={addTask}
             />
