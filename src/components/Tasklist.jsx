@@ -1,6 +1,6 @@
 import Task from "./Task"
 
-const Tasklist = ({tasks, handleDelete, handleToggle}) => {
+const Tasklist = ({tasks, setTasks, handleDelete, handleToggle}) => {
 
     const taskArray = tasks.map(({id, name, description, isDone}) => {
         return (<Task
@@ -10,6 +10,7 @@ const Tasklist = ({tasks, handleDelete, handleToggle}) => {
                     description={description}
                     handleDelete={handleDelete}
                     handleToggle={handleToggle}
+                    setTasks={setTasks}
                     isDone={isDone}
                 />)
     })

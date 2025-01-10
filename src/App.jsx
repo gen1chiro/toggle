@@ -60,6 +60,7 @@ function App() {
             />
             <Tasklist
                     tasks={tasks}
+                    setTasks={setTasks}
                     handleDelete={deleteTask}
                     handleToggle={toggleTask}
             />
