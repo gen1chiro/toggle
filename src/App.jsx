@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import Tasklist from "./components/Tasklist";
 import TaskInput from "./components/TaskInput";
+import TasklistHeader from "./components/TasklistHeader";
 
 function App() {
     const dialogRef = useRef(null)
@@ -9,8 +10,6 @@ function App() {
     const doneTaskCount = tasks.filter(
         task => task.isDone === true
     ).length
-    const dateFormat = { weekday: "long", day: "numeric", month: "long"}
-    const formattedDate = new Date().toLocaleDateString("en-US", dateFormat)
 
     useEffect(() => {
         localStorage.setItem("tasks", JSON.stringify(tasks))
@@ -54,16 +53,11 @@ function App() {
 
     return (
         <main className="bg-white rounded-2xl shadow-2xl">
-            <section className="p-4 flex flex-col gap-2">
-                <div className="flex justify-between items-center">
-                    <div>
-                        <h1 className="text-2xl font-semibold tracking-wide">Task&#39;s</h1>
-                        <p className="text-gray-600">{formattedDate}</p>
-                    </div>
-                    <button className="bg-violet-100 px-4 py-2 rounded-xl text-violet-700 hover:bg-violet-200 hover:scale-[1.02] transition-all ease-out" onClick={handleOpen}><span className="font-bold">+</span> New Task</button>
-                </div>
-                <h1>{doneTaskCount}/{taskCount} Completed</h1>
-            </section>
+            <TasklistHeader
+                taskCount={taskCount}
+                doneTaskCount={doneTaskCount}
+                handleOpen={handleOpen}
+            />
             <TaskInput
                 ref={dialogRef}
                 onClose={handleClose}

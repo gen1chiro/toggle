@@ -6,6 +6,7 @@ export default {
       "./src/main.jsx",
       "./src/components/Task.jsx",
       "./src/components/Tasklist.jsx",
+      "./src/components/TasklistHeader.jsx",
       "./src/components/TaskInput.jsx",
   ],
   theme: {

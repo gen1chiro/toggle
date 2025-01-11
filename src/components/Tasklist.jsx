@@ -16,7 +16,7 @@ const Tasklist = ({tasks, setTasks, handleDelete, handleToggle}) => {
     })
 
     return (
-        <section>
+        <section className="p-4 pt-0">
             {taskArray}
         </section>
     )
