@@ -52,24 +52,29 @@ function App() {
     }
 
     return (
-        <main className="bg-white rounded-2xl shadow-2xl">
-            <TasklistHeader
-                taskCount={taskCount}
-                doneTaskCount={doneTaskCount}
-                handleOpen={handleOpen}
-            />
-            <TaskInput
-                ref={dialogRef}
-                onClose={handleClose}
-                handleAdd={addTask}
-            />
-            <Tasklist
+        <>
+            <main className="w-5/6 sm:w-[450px] bg-white rounded-2xl shadow-2xl">
+                <TasklistHeader
+                    taskCount={taskCount}
+                    doneTaskCount={doneTaskCount}
+                    handleOpen={handleOpen}
+                />
+                <TaskInput
+                    ref={dialogRef}
+                    onClose={handleClose}
+                    handleAdd={addTask}
+                />
+                <Tasklist
                     tasks={tasks}
                     setTasks={setTasks}
                     handleDelete={deleteTask}
                     handleToggle={toggleTask}
-            />
-        </main>
+                />
+            </main>
+           <footer>
+               <h1 className="mt-6">Designed & Developed by <a href="https://github.com/gen1chiro" target="_blank" className="font-semibold">Jul Leo Javellana</a></h1>
+           </footer>
+        </>
     )
 }
 

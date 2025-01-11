@@ -16,7 +16,7 @@ const Tasklist = ({tasks, setTasks, handleDelete, handleToggle}) => {
     })
 
     return (
-        <section className="p-4 pt-0">
+        <section className="w-full max-h-96 px-4 pb-4 pt-1 overflow-auto">
             {taskArray}
         </section>
     )
