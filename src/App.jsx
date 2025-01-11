@@ -9,6 +9,8 @@ function App() {
     const doneTaskCount = tasks.filter(
         task => task.isDone === true
     ).length
+    const dateFormat = { weekday: "long", day: "numeric", month: "long"}
+    const formattedDate = new Date().toLocaleDateString("en-US", dateFormat)
 
     useEffect(() => {
         localStorage.setItem("tasks", JSON.stringify(tasks))
@@ -51,13 +53,21 @@ function App() {
     }
 
     return (
-        <main className="bg-pink-50">
-            <h1>{doneTaskCount}/{taskCount} Completed</h1>
-            <button onClick={handleOpen}>Add Task</button>
+        <main className="bg-white rounded-2xl shadow-2xl">
+            <section className="p-4 flex flex-col gap-2">
+                <div className="flex justify-between items-center">
+                    <div>
+                        <h1 className="text-2xl font-semibold tracking-wide">Task&#39;s</h1>
+                        <p className="text-gray-600">{formattedDate}</p>
+                    </div>
+                    <button className="bg-violet-100 px-4 py-2 rounded-xl text-violet-700 hover:bg-violet-200 hover:scale-[1.02] transition-all ease-out" onClick={handleOpen}><span className="font-bold">+</span> New Task</button>
+                </div>
+                <h1>{doneTaskCount}/{taskCount} Completed</h1>
+            </section>
             <TaskInput
-                    ref={dialogRef}
-                    onClose={handleClose}
-                    handleAdd={addTask}
+                ref={dialogRef}
+                onClose={handleClose}
+                handleAdd={addTask}
             />
             <Tasklist
                     tasks={tasks}
