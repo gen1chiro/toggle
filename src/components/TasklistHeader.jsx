@@ -2,6 +2,12 @@ const TasklistHeader = ({taskCount, doneTaskCount, handleOpen}) => {
     const dateFormat = { weekday: "long", day: "numeric", month: "long"}
     const formattedDate = new Date().toLocaleDateString("en-US", dateFormat)
 
+    const gridColumn = {
+        gridTemplateColumns: `repeat(${taskCount}, minmax(0, 1fr))`
+    }
+    const columnSpan = doneTaskCount > 0 ?
+        {gridColumn: `span ${doneTaskCount} / span ${doneTaskCount}`} : { width: "0.5rem"}
+
     return (
         <section className="p-4 flex flex-col gap-3">
             <div className="flex justify-between items-center">
@@ -15,8 +21,8 @@ const TasklistHeader = ({taskCount, doneTaskCount, handleOpen}) => {
                 </button>
             </div>
             <div className="flex justify-between items-center gap-4 px-1 rounded-lg">
-                <div className="h-2 grow bg-gray-200 grid grid-cols-5 rounded-full">
-                    <div className="col-span-3 bg-gray-800 rounded-full"></div>
+                <div className="h-2 grow bg-gray-200 grid rounded-full" style={gridColumn}>
+                    <div className="bg-gray-800 rounded-full" style={columnSpan}></div>
                 </div>
                 <h1 className="tracking-wide text-sm text-gray-600">{doneTaskCount}/{taskCount} Completed</h1>
             </div>
