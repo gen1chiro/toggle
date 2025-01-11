@@ -12,7 +12,7 @@ const TasklistHeader = ({taskCount, doneTaskCount, handleOpen}) => {
         <section className="p-4 flex flex-col gap-3">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-2xl font-semibold tracking-wide">Task&#39;s</h1>
+                    <h1 className="text-2xl font-semibold tracking-wide">Tasks</h1>
                     <p className="text-gray-600">{formattedDate}</p>
                 </div>
                 <button
