@@ -51,6 +51,10 @@ function App() {
         })
     }
 
+    const clearAllTasks = () => {
+        setTasks([])
+    }
+
     return (
         <>
             <main className="w-5/6 sm:w-[450px] bg-white rounded-2xl shadow-2xl">
@@ -58,6 +62,7 @@ function App() {
                     taskCount={taskCount}
                     doneTaskCount={doneTaskCount}
                     handleOpen={handleOpen}
+                    handleClear={clearAllTasks}
                 />
                 <TaskInput
                     ref={dialogRef}

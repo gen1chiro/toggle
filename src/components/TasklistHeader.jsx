@@ -1,6 +1,7 @@
-const TasklistHeader = ({taskCount, doneTaskCount, handleOpen}) => {
+const TasklistHeader = ({taskCount, doneTaskCount, handleOpen, handleClear}) => {
     const dateFormat = { weekday: "long", day: "numeric", month: "long"}
     const formattedDate = new Date().toLocaleDateString("en-US", dateFormat)
+    const areAllTasksDone = taskCount > 0 && doneTaskCount === taskCount
 
     const gridColumn = {
         gridTemplateColumns: `repeat(${taskCount}, minmax(0, 1fr))`
@@ -24,7 +25,13 @@ const TasklistHeader = ({taskCount, doneTaskCount, handleOpen}) => {
                 <div className="h-2 grow bg-gray-200 grid rounded-full" style={gridColumn}>
                     <div className="bg-gray-800 rounded-full" style={columnSpan}></div>
                 </div>
-                <h1 className="tracking-wide text-sm text-gray-600">{doneTaskCount}/{taskCount} Completed</h1>
+                {areAllTasksDone ?
+                    <button
+                        className="text-sm w-[100px] py-1 rounded-md text-gray-600 shadow:md bg-gray-100 hover:bg-gray-200 hover:scale-[1.02] transition-all ease-out"
+                        onClick={handleClear}
+                    >Clear All</button> :
+                    <h1 className="tracking-wide text-sm py-1 text-gray-600 w-[100px]">{doneTaskCount}/{taskCount} Completed</h1>
+                }
             </div>
         </section>
     )
