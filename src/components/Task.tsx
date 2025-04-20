@@ -1,17 +1,39 @@
 import { useState } from "react";
 
-const Task = ({id, name, description, isDone, handleDelete, handleToggle, setTasks}) => {
+interface TaskProps {
+    id: number
+    name: string
+    description: string
+    isDone: boolean
+    handleDelete: (id: number) => void
+    handleToggle: (id: number) => void
+    setTasks: React.Dispatch<React.SetStateAction<Task[]>>
+}
+
+type Task = {
+    id: number
+    name: string
+    description: string
+    isDone: boolean
+}
+
+type taskInput = {
+    name: string
+    description: string
+}
+
+const Task = ({id, name, description, isDone, handleDelete, handleToggle, setTasks}: TaskProps) => {
 
     const [isEditing, setIsEditing] = useState(false)
 
     const handleSubmit = (data) => {
-        const newTask = Object.fromEntries(data)
+        const {name, description}: taskInput = Object.fromEntries(data)
         setTasks(tasks => {
             return tasks.map(task => {
                 return id === task.id ? {
                     ...task,
-                    name: newTask.name,
-                    description: newTask.description
+                    name,
+                    description
                 } : task
             })
         })

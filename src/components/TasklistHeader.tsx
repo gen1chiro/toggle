@@ -1,3 +1,10 @@
+interface TasklistHeaderProps {
+    taskCount: number
+    doneTaskCount: number
+    handleOpen: () => void
+    handleClear: () => void
+}
+
 const TasklistHeader = ({taskCount, doneTaskCount, handleOpen, handleClear}) => {
     const dateFormat = { weekday: "long", day: "numeric", month: "long"}
     const formattedDate = new Date().toLocaleDateString("en-US", dateFormat)

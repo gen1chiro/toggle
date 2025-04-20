@@ -3,12 +3,19 @@ import Tasklist from "./components/Tasklist";
 import TaskInput from "./components/TaskInput";
 import TasklistHeader from "./components/TasklistHeader";
 
+type Task = {
+    id: number
+    name: string
+    description: string
+    isDone: boolean
+}
+
 function App() {
-    const dialogRef = useRef(null)
-    const [tasks ,setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || [])
-    const taskCount= tasks.length
+    const dialogRef = useRef<HTMLDialogElement | null>(null)
+    const [tasks ,setTasks] = useState<Task[]>(JSON.parse(localStorage.getItem("tasks")) || [])
+    const taskCount = tasks.length
     const doneTaskCount = tasks.filter(
-        task => task.isDone === true
+        task => task.isDone
     ).length
 
     useEffect(() => {
@@ -16,19 +23,19 @@ function App() {
     }, [tasks])
 
     const handleOpen = () => {
-        if (dialogRef.current) dialogRef.current.showModal()
+        if (dialogRef.current) dialogRef.current?.showModal()
     }
     const handleClose = () => {
-        if (dialogRef.current) dialogRef.current.close()
+        if (dialogRef.current) dialogRef.current?.close()
     }
 
-    const addTask = (task) => {
+    const addTask = (name, description) => {
         setTasks(tasks => [
             ...tasks,
             {
                 id: Date.now(),
-                name: task.name,
-                description: task.description,
+                name: name,
+                description: description,
                 isDone: false
             }
         ])

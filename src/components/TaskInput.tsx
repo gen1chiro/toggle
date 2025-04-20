@@ -1,15 +1,23 @@
 import { useRef } from "react";
+import Task from "./Task";
 
-const TaskInput = ({handleAdd, onClose, ref}) => {
+interface TaskInputProps {
+    onClose: () => void
+    handleAdd: (name: string, description: string) => void
+    ref: React.RefObject<HTMLDialogElement>
+}
 
-    const formRef = useRef(null);
+const TaskInput = ({handleAdd, onClose, ref}: TaskInputProps) => {
+
+    const formRef = useRef<HTMLFormElement | null>(null);
     const handleSubmit = (data) => {
-        handleAdd(Object.fromEntries(data))
+        const {name, description} = Object.fromEntries(data)
+        handleAdd(name, description)
     }
 
     const handleClose = () => {
         if (formRef.current) {
-            formRef.current.reset();
+            formRef.current?.reset();
         }
         onClose()
     };

@@ -2,12 +2,12 @@
 export default {
   content: [
       "./index.html",
-      "./src/App.jsx",
-      "./src/main.jsx",
-      "./src/components/Task.jsx",
-      "./src/components/Tasklist.jsx",
-      "./src/components/TasklistHeader.jsx",
-      "./src/components/TaskInput.jsx",
+      "./src/App.tsx",
+      "./src/main.tsx",
+      "./src/components/Task.tsx",
+      "./src/components/Tasklist.tsx",
+      "./src/components/TasklistHeader.tsx",
+      "./src/components/TaskInput.tsx",
   ],
   theme: {
     extend: {},

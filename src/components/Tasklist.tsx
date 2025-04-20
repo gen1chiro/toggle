@@ -1,6 +1,20 @@
 import Task from "./Task"
 
-const Tasklist = ({tasks, setTasks, handleDelete, handleToggle}) => {
+interface TasklistProps {
+    tasks: Task[]
+    setTask: React.Dispatch<React.SetStateAction<Task[]>>
+    handleDelete: (id: number) => void
+    handleToggle: (id: number) => void
+}
+
+type Task = {
+    id: number
+    name: string
+    description: string
+    isDone: boolean
+}
+
+const Tasklist = ({tasks, setTasks, handleDelete, handleToggle}: TasklistProps) => {
 
     const taskArray = tasks.map(({id, name, description, isDone}) => {
         return (<Task
