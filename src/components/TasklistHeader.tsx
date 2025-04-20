@@ -5,8 +5,8 @@ interface TasklistHeaderProps {
     handleClear: () => void
 }
 
-const TasklistHeader = ({taskCount, doneTaskCount, handleOpen, handleClear}) => {
-    const dateFormat = { weekday: "long", day: "numeric", month: "long"}
+const TasklistHeader = ({taskCount, doneTaskCount, handleOpen, handleClear}: TasklistHeaderProps) => {
+    const dateFormat: Intl.DateTimeFormatOptions = { weekday: "long", day: "numeric", month: "long"}
     const formattedDate = new Date().toLocaleDateString("en-US", dateFormat)
     const areAllTasksDone = taskCount > 0 && doneTaskCount === taskCount
 
