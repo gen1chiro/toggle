@@ -29,7 +29,7 @@ function App() {
         if (dialogRef.current) dialogRef.current?.close()
     }
 
-    const addTask = (name, description) => {
+    const addTask = (name: string, description: string) => {
         setTasks(tasks => [
             ...tasks,
             {
@@ -41,13 +41,13 @@ function App() {
         ])
     }
 
-    const deleteTask = (id) => {
+    const deleteTask = (id: number) => {
         setTasks(tasks => {
              return tasks.filter(task => task.id !== id)
         })
     }
 
-    const toggleTask = (id) => {
+    const toggleTask = (id: number) => {
         setTasks(tasks => {
             return tasks.map(task => {
                 return task.id === id? {

@@ -2,7 +2,7 @@ import Task from "./Task"
 
 interface TasklistProps {
     tasks: Task[]
-    setTask: React.Dispatch<React.SetStateAction<Task[]>>
+    setTasks: React.Dispatch<React.SetStateAction<Task[]>>
     handleDelete: (id: number) => void
     handleToggle: (id: number) => void
 }
